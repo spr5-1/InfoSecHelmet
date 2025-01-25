@@ -19,6 +19,12 @@ app.listen(PORT, () => {
   console.log('server is running on port ${PORT}');
 });
 
+process.on('SIGINT', () => {
+  server.close(() => {
+    console.log('Server shut down gracefully');
+    process.exit(0);
+  });
+});
 
 
 
