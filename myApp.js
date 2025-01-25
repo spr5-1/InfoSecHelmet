@@ -2,7 +2,22 @@ const express = require('express');
 const app = express();
 const helmet = require('helmet');
 
+// Use Helmet to enhance security
+app.use(helmet());
 
+// Disable the "X-Powered-By" header for added security
+app.use(helmet.hidePoweredBy());
+
+// Example route
+app.get('/', (req, res) => {
+  res.send('Hello, World!');
+});
+
+// Your server setup (e.g., listen on a port)
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log('server is running on port ${PORT}');
+});
 
 
 
